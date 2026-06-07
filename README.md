@@ -1,96 +1,341 @@
-# 🚕 CabGPT – Agentic AI Cab Booking & Pricing Assistant
+# 🚕 CabGPT — AI-Powered Cab Intelligence Platform
 
-A production-style AI agent demo built for AI/ML internship interviews.  
-Uses **Gemini API** for NLP extraction, **Streamlit** for UI, and a modular
-multi-step agentic pipeline — all in a single Python file.
+### Real-Time Fare Intelligence Across Ola, Uber & Rapido
 
----
+CabGPT is an AI-powered cab fare comparison platform that combines local LLM intelligence, dynamic surge pricing, weather awareness, and route estimation to help users discover the most cost-effective ride options instantly.
 
-## 🏗️ Agentic Pipeline
-
-```
-User Input
-   ↓
-Agent 1 · NLP Extraction    ← Gemini 1.5 Flash (LLM)
-   ↓
-Tool 2  · Distance Estimator ← Python dict lookup
-   ↓
-Tool 3  · Pricing Engine     ← Rule-based fare calculation
-   ↓
-Agent 4 · Decision Agent     ← Business logic (Mini/Sedan/SUV)
-   ↓
-Agent 5 · Response Builder   ← Streamlit UI renderer
-```
+Built using Flask, Python, and Ollama, CabGPT supports natural Hinglish conversations, intelligent fare recommendations, and AI-powered booking assistance—all while functioning even without premium API keys.
 
 ---
 
-## ⚡ Quick Start
+## ✨ Key Features
 
-### 1. Clone / download the project
+### ⚡ Instant Fare Comparison
+
+Get real-time fare estimates across multiple providers without waiting for AI processing.
+
+Supported Providers:
+
+* Ola Mini
+* Ola Auto
+* Uber Go
+* Uber Auto
+* Rapido Bike
+* Rapido Auto
+
+---
+
+### 🤖 AI Booking Assistant
+
+Ask naturally in English or Hinglish:
+
+**Example:**
+
+> Meerut se Delhi kal subah 9 baje sabse sasta cab batao
+
+CabGPT understands travel intent and recommends the most economical ride option.
+
+---
+
+### 🌦️ Smart Weather-Aware Pricing
+
+The platform automatically considers:
+
+* Rain conditions
+* Peak traffic hours
+* Dynamic surge multipliers
+
+to provide more realistic fare estimates.
+
+---
+
+### 🗺️ Route Intelligence
+
+Distance calculation supports:
+
+#### Google Maps Mode
+
+* Accurate road distance
+* Route optimization
+
+#### Offline Fallback Mode
+
+* Geopy-based geodesic calculations
+* No API key required
+
+---
+
+### 💬 AI Driver Simulation
+
+After booking, users can chat with a simulated driver in Hinglish.
+
+Example:
+
+> Driver kaha tak pahucha?
+
+> Bhai 5 minute mein pickup point pe pahunch raha hoon.
+
+---
+
+### 🔄 Intelligent Fallback System
+
+If the selected LLM:
+
+* Fails tool calling
+* Hallucinates responses
+* Returns incomplete results
+
+CabGPT automatically executes the backend tool pipeline and delivers verified data.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+Browser (HTML + CSS + JavaScript)
+            │
+            ▼
+      Flask Backend
+            │
+ ┌──────────┴──────────┐
+ │                     │
+ ▼                     ▼
+Quick Fare API      AI Chat API
+(No LLM)            (Ollama LLM)
+ │                     │
+ └──────────┬──────────┘
+            │
+     Tool Execution Layer
+            │
+ ┌──────────┼───────────┬───────────┐
+ │          │           │           │
+ ▼          ▼           ▼           ▼
+Geocoder   Maps      Weather     Fare Engine
+```
+
+---
+
+## 🚀 Technology Stack
+
+### Backend
+
+* Python 3.10+
+* Flask
+
+### AI
+
+* Ollama
+* Llama 3.1
+* Mistral
+* Gemma 2
+* Phi 3
+
+### APIs
+
+* OpenWeatherMap
+* Google Maps API
+
+### Fallback Services
+
+* Geopy
+* Nominatim
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+---
+
+## 📂 Project Structure
+
+```text
+CabGPT/
+│
+├── server.py
+├── agent.py
+├── prompts.py
+├── config.py
+├── requirements.txt
+│
+├── tools/
+│   ├── geocoding.py
+│   ├── maps.py
+│   ├── weather.py
+│   └── fare_calculator.py
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    ├── css/
+    │   └── style.css
+    │
+    └── js/
+        └── main.js
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
 ```bash
-cd cab_assistant
+git clone https://github.com/sauravsingh019/CabGPT.git
+cd CabGPT
 ```
 
-### 2. Install dependencies
+### Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Set your Gemini API Key
-Get a free key at https://makersuite.google.com/app/apikey
+### Install Ollama
 
-**Option A – environment variable (recommended)**
+Download and install Ollama.
+
+Pull a model:
+
 ```bash
-export GEMINI_API_KEY="your_key_here"    # Linux / macOS
-set GEMINI_API_KEY=your_key_here         # Windows CMD
-$env:GEMINI_API_KEY="your_key_here"      # Windows PowerShell
+ollama pull llama3.1
 ```
 
-**Option B – enter in the app sidebar**  
-Just paste your key in the sidebar text box when the app opens.
+Alternative models:
 
-### 4. Run the app
 ```bash
-streamlit run app.py
-```
-
-Then open http://localhost:8501 in your browser.
-
----
-
-## 💬 Sample Requests
-- "Book a cab from Meerut to Delhi tomorrow at 9 AM"
-- "I need a ride from Noida to Gurgaon at 6 PM today"
-- "Get me a cab from Delhi to Agra on 2025-08-10 at 7 AM"
-
----
-
-## 📐 Pricing Rules
-| Cab Type | Rate     | Best For        |
-|----------|----------|-----------------|
-| Mini     | ₹10/km   | < 5 km          |
-| Sedan    | ₹15/km   | 5–15 km         |
-| SUV      | ₹20/km   | 15+ km          |
-
-- Base fare: ₹50 flat
-- Peak hours (8–11 AM, 5–9 PM): 1.2× multiplier
-
----
-
-## 🗂️ Project Structure
-```
-cab_assistant/
-├── app.py            # Full app (single file)
-├── requirements.txt
-└── README.md
+ollama pull mistral
+ollama pull gemma2
+ollama pull phi3
 ```
 
 ---
 
-## 🎯 Why This Is Agentic AI
-Unlike a simple chatbot, this system:
-1. **Decomposes** the user's request into sub-tasks
-2. **Calls tools** (distance lookup, pricing engine) autonomously
-3. **Makes decisions** (cab type selection) based on tool outputs
-4. **Handles errors** at each step with clear feedback
-5. **Renders results** with full transparency into the reasoning chain
+## 🔑 Optional Configuration
+
+Create a `.env` file:
+
+```env
+GOOGLE_MAPS_API_KEY=YOUR_KEY
+OPENWEATHER_API_KEY=YOUR_KEY
+```
+
+CabGPT works without these keys using built-in fallback services.
+
+---
+
+## ▶️ Run Application
+
+```bash
+python server.py
+```
+
+Open:
+
+```text
+http://localhost:5000
+```
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint         | Description              |
+| ------ | ---------------- | ------------------------ |
+| GET    | /                | Landing Page             |
+| GET    | /api/models      | Available Ollama Models  |
+| POST   | /api/quick_fare  | Instant Fare Calculation |
+| POST   | /api/chat        | AI Assistant             |
+| POST   | /api/driver_chat | Driver Simulation        |
+
+---
+
+## 💰 Fare Engine
+
+### Base Pricing
+
+| Service     | Base Fare | Per KM |
+| ----------- | --------- | ------ |
+| Ola Mini    | ₹30       | ₹12    |
+| Ola Auto    | ₹25       | ₹10    |
+| Uber Go     | ₹35       | ₹13    |
+| Uber Auto   | ₹25       | ₹10    |
+| Rapido Bike | ₹15       | ₹6     |
+| Rapido Auto | ₹20       | ₹9     |
+
+### Surge Logic
+
+| Condition   | Multiplier |
+| ----------- | ---------- |
+| Normal      | 1.0×       |
+| Peak Hours  | 1.3×       |
+| Rain        | 1.2×       |
+| Peak + Rain | 1.5×       |
+
+---
+
+## 🎯 Example Query
+
+### Request
+
+```json
+{
+  "query": "Meerut se Delhi kal subah 9 baje Rapido chahiye",
+  "model_name": "llama3.1"
+}
+```
+
+### Response
+
+```json
+{
+  "provider": "Rapido Bike",
+  "estimated_fare": "₹350-380",
+  "weather": "Clear",
+  "surge": "No"
+}
+```
+
+---
+
+## 🌟 Future Roadmap
+
+* User Authentication
+* Trip History Dashboard
+* Voice-Based Booking
+* Live Traffic Integration
+* Fare Prediction Models
+* Mobile Application
+* PostgreSQL Support
+* Docker Deployment
+
+---
+
+## 📄 License
+
+MIT License
+
+Feel free to use, modify, and distribute this project.
+
+---
+
+## 👨‍💻 Author
+
+**Saurav Singh**
+
+BCA Student • AI Developer • Full Stack Enthusiast
+
+GitHub:
+https://github.com/sauravsingh019
+
+---
+
+<div align="center">
+
+### 🚕 Smarter Rides. Better Prices. Powered by AI.
+
+Made with ❤️ using Flask, Python & Ollama
+
+</div>

@@ -115,7 +115,8 @@ def get_driver_response(user_msg: str, model_name: str, pickup: str, drop: str) 
         if isinstance(response, dict):
             return response.get("message", {}).get("content", "").strip()
         else:
-            return getattr(response, "message", {}).get("content", "").strip()
+            msg = getattr(response, "message", None)
+            return (getattr(msg, "content", "") or "").strip()
             
     except Exception as e:
         logging.error(f"Ollama driver chat simulation failed: {str(e)}")
