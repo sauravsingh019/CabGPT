@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CabGPT — AI-Powered Cab Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">🚕 CabGPT</a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Providers</a>
+    <a href="#surge">Surge Logic</a>
+    <a href="javascript:void(0)" class="nav-cta" id="nav-try-now">Book Your Ride →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      LOCAL AI · OLLAMA POWERED · NO API KEYS NEEDED
+    </div>
+    <h1 class="hero-title">
+      Your AI-Powered<br><span>Cab Intelligence</span><br>Platform
+    </h1>
+    <p class="hero-sub">
+      Real-time fare estimation across Ola, Uber &amp; Rapido. Powered by local Ollama AI, live weather data, and dynamic surge pricing — all in natural language.
+    </p>
+    <div class="hero-actions">
+      <a href="javascript:void(0)" class="btn-primary" id="hero-estimate-btn">
+        🚕 Book Your Ride
+      </a>
+      <a href="#how" class="btn-secondary">
+        See How It Works →
+      </a>
+    </div>
+
+    <!-- LIVE DEMO CARD -->
+    <div class="hero-demo" style="animation:float 4s ease-in-out infinite">
+      <div class="demo-card">
+        <div class="demo-topbar">
+          <div class="demo-dot" style="background:#ff5f57"></div>
+          <div class="demo-dot" style="background:#febc2e"></div>
+          <div class="demo-dot" style="background:#28c840"></div>
+          <div class="demo-title">CabGPT — AI Cab Assistant</div>
+        </div>
+        <div class="demo-body">
+          <div class="chat-msg">
+            <div class="chat-user">
+              <div class="bubble">Book a cab from Meerut to Delhi tomorrow at 9 AM</div>
+            </div>
+          </div>
+          <div class="agent-steps">
+            <div class="agent-step"><span class="step-icon-done">✓</span> NLP extracted: Meerut → Delhi, tomorrow 09:00</div>
+            <div class="agent-step"><span class="step-icon-done">✓</span> Coordinates resolved via geocoder</div>
+            <div class="agent-step"><span class="step-icon-done">✓</span> Route distance: 72.4 km · 1h 45m</div>
+            <div class="agent-step"><span class="step-icon-done">✓</span> Weather: Clear ☀️ 28°C</div>
+            <div class="agent-step" style="color:var(--accent)"><span class="step-icon-active">◉</span> Applying peak hour surge (1.3x)...</div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-bot">
+              <div class="bot-avatar">🚕</div>
+              <div class="bubble">
+                Found best fares for Meerut → Delhi, 9 AM (Peak hours, 1.3x)
+                <div class="fare-row">
+                  <div class="fare-mini best">
+                    <div class="best-badge">CHEAPEST</div>
+                    <div class="provider">Rapido Bike</div>
+                    <div class="price">₹462</div>
+                    <div class="eta">ETA 6 min</div>
+                  </div>
+                  <div class="fare-mini">
+                    <div class="provider">Ola Auto</div>
+                    <div class="price">₹953</div>
+                    <div class="eta">ETA 7 min</div>
+                  </div>
+                  <div class="fare-mini">
+                    <div class="provider">Uber Go</div>
+                    <div class="price">₹1,228</div>
+                    <div class="eta">ETA 9 min</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-label">CAB PROVIDERS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span>∞</span></div>
+        <div class="stat-label">NLP QUERIES</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<span>LLM</span></div>
+        <div class="stat-label">FOR QUICK FARE</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3<span>x</span></div>
+        <div class="stat-label">SURGE MODES</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">Architecture</div>
+    <h2 class="section-title">How the AI Agent<br>thinks &amp; acts</h2>
+    <p class="section-sub">Not a simple chatbot. A true agentic loop where Ollama autonomously calls tools, processes results, and reasons across multiple steps.</p>
+
+    <div class="how-grid reveal">
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-name">NLP Intent Extraction</div>
+            <div class="step-desc">Ollama parses natural language — Hinglish, English, or mixed — extracting pickup, drop, date, time, and cab preference.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-name">Agentic Tool Loop</div>
+            <div class="step-desc">Agent autonomously decides which tools to call: geocoder, distance matrix, weather API, surge calculator — in the right order.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-name">Real Data Fusion</div>
+            <div class="step-desc">Live weather + actual road distances + time-aware peak hour detection combine for accurate pricing.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-name">Structured Response</div>
+            <div class="step-desc">Final answer with fare comparison, best pick recommendation, time projections, and animated route map.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-viz reveal">
+        <div class="viz-title">// AGENT EXECUTION TRACE</div>
+        <div class="viz-node active">
+          <span style="color:var(--accent)">▶</span>
+          <span>User Query → Local Ollama Model</span>
+        </div>
+        <div class="viz-arrow">↓ function_calling</div>
+        <div class="viz-tools">
+          <div class="viz-tool t1">📍 get_coordinates</div>
+          <div class="viz-tool t2">📏 get_distance</div>
+          <div class="viz-tool t3">🌦 get_weather</div>
+          <div class="viz-tool t4">💰 estimate_fare</div>
+          <div class="viz-tool t5">⚡ peak_hour_info</div>
+          <div class="viz-tool" style="color:var(--muted2)">+ more tools</div>
+        </div>
+        <div class="viz-arrow">↓ tool_results → Ollama</div>
+        <div class="viz-node active">
+          <span style="color:var(--green)">✓</span>
+          <span>Final structured response + UI render</span>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+          <div style="font-size:0.65rem;color:var(--muted2);margin-bottom:6px">ACTIVE LOOP METRICS</div>
+          <div style="display:flex;gap:12px">
+            <div style="font-size:0.7rem;color:var(--muted)">Max turns: <span style="color:var(--accent)">10</span></div>
+            <div style="font-size:0.7rem;color:var(--muted)">Tools: <span style="color:var(--green)">5 defined</span></div>
+            <div style="font-size:0.7rem;color:var(--muted)">Model: <span style="color:var(--blue)">Local Ollama</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need<br>to pick the right cab</h2>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(255,183,3,0.1)">🧠</div>
+        <div class="feature-name">Hinglish NLP</div>
+        <div class="feature-desc">Understands natural Indian language — "Bhaiya CP se airport kitna padega?" works perfectly.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(59,130,246,0.1)">🗺️</div>
+        <div class="feature-name">Animated Route Map</div>
+        <div class="feature-desc">Custom SVG map with live taxi animation, pulsing pickup/drop markers, and gradient route line.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(34,197,94,0.1)">⚡</div>
+        <div class="feature-name">Dynamic Surge Pricing</div>
+        <div class="feature-desc">Peak hours, rain, and combined conditions automatically adjust fare multipliers (1.2x – 1.5x) in real-time.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(167,139,250,0.1)">🕐</div>
+        <div class="feature-name">Time Projections</div>
+        <div class="feature-desc">See how fares change Now vs +1hr vs +2hr so you can choose the cheapest time to travel.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(251,133,0,0.1)">🚕</div>
+        <div class="feature-name">Driver Simulation</div>
+        <div class="feature-desc">After booking, chat with a local AI-powered simulated driver (Rahul Kumar) in real Hinglish.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(239,68,68,0.1)">⚡</div>
+        <div class="feature-name">Instant Fares</div>
+        <div class="feature-desc">Quick Fields mode bypasses LLM entirely — geocode + distance + weather + fare calculated in seconds.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVIDERS -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-label">Providers</div>
+    <h2 class="section-title">All major Indian<br>cab services covered</h2>
+    <p class="section-sub">Real base rates with dynamic surge applied automatically based on time and weather.</p>
+
+    <div class="providers-grid reveal">
+      <div class="provider-card">
+        <div class="provider-name">🚗 Ola</div>
+        <div class="rate-row"><span class="rate-label">Ola Mini</span><span class="rate-val">₹12/km · base ₹30</span></div>
+        <div class="rate-row"><span class="rate-label">Ola Auto</span><span class="rate-val">₹10/km · base ₹25</span></div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-name">🚗 Uber</div>
+        <div class="rate-row"><span class="rate-label">Uber Go</span><span class="rate-val">₹13/km · base ₹35</span></div>
+        <div class="rate-row"><span class="rate-label">Uber Auto</span><span class="rate-val">₹10/km · base ₹25</span></div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-name">🏍️ Rapido</div>
+        <div class="rate-row"><span class="rate-label">Rapido Bike</span><span class="rate-val">₹6/km · base ₹15</span></div>
+        <div class="rate-row"><span class="rate-label">Rapido Auto</span><span class="rate-val">₹9/km · base ₹20</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SURGE LOGIC -->
+<section id="surge" class="providers-section">
+  <div class="container">
+    <div class="section-label">Surge Logic</div>
+    <h2 class="section-title">AI-powered dynamic<br>pricing intelligence</h2>
+
+    <div class="surge-cards reveal">
+      <div class="surge-card surge-normal">
+        <div class="surge-mult">1.0×</div>
+        <div class="surge-cond">Normal Rate</div>
+        <div class="surge-when">Off-peak · Clear weather</div>
+      </div>
+      <div class="surge-card surge-medium">
+        <div class="surge-mult">1.2× – 1.3×</div>
+        <div class="surge-cond">Moderate Surge</div>
+        <div class="surge-when">Rain only · OR peak hours only</div>
+      </div>
+      <div class="surge-card surge-high">
+        <div class="surge-mult">1.5×</div>
+        <div class="surge-cond">High Surge</div>
+        <div class="surge-when">Peak hours + Rain combined</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="start" class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div class="hero-badge" style="margin-bottom:20px">
+        <div class="hero-badge-dot"></div>
+        READY TO USE · LOCAL OLLAMA · NO CLOUD KEYS
+      </div>
+      <h2 class="cta-title">Start estimating fares<br>in 30 seconds</h2>
+      <p class="cta-sub">Run Ollama locally and get instant AI-powered fare estimates across all major Indian cities.</p>
+      <div class="cta-env">
+        <span style="color:var(--muted2)">$</span>
+        <span>python server.py</span>
+        <span style="color:var(--muted2);margin-left:auto;font-size:0.68rem">→ localhost:5000</span>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button id="cta-open-btn" class="btn-primary" style="border:none; cursor:pointer;">🚕 Book Your Ride Now</button>
+        <a href="#how" class="btn-secondary">View Architecture</a>
+      </div>
+      <div style="margin-top:28px;font-size:0.75rem;color:var(--muted2);font-family:'DM Mono',monospace">
+        OpenWeatherMap + Google Maps keys optional · geopy fallback built-in
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🚕 CabGPT</div>
+  <div class="footer-links">
+    <a href="#how">Architecture</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Providers</a>
+  </div>
+  <div class="footer-copy">Built with Flask · Ollama · Python</div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     BOOKING MODAL OVERLAY
+════════════════════════════════════════ -->
+<div id="booking-modal" class="booking-modal-overlay hidden">
+  <div class="booking-modal-content">
+
+    <!-- Close -->
+    <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+
+    <!-- Modal Header -->
+    <div class="modal-header-strip">
+      <div class="modal-header-left">
+        <span class="modal-logo">🚕</span>
+        <div>
+          <div class="modal-title">CabGPT Booking Console</div>
+          <div class="modal-subtitle">Instant fare comparison across Ola, Uber &amp; Rapido</div>
+        </div>
+      </div>
+      <div class="modal-header-right">
+        <label class="model-label">AI Model</label>
+        <select id="ollama-model" class="model-select">
+          <option value="">Loading models...</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- TAB NAVIGATION -->
+    <div class="booking-tabs">
+      <button type="button" class="tab-btn active" data-pane="pane-quick">⚡ Quick Search</button>
+      <button type="button" class="tab-btn" data-pane="pane-ai">🤖 AI Assistant</button>
+    </div>
+
+    <!-- ───── QUICK SEARCH PANE ───── -->
+    <div id="pane-quick" class="booking-pane">
+      <form id="quick-form">
+        <!-- Horizontal fields row -->
+        <div class="fields-strip">
+          <div class="field-col field-col--from">
+            <label for="field-pickup">📍 From</label>
+            <input type="text" id="field-pickup" placeholder="e.g. Meerut" autocomplete="off" required>
+          </div>
+          <div class="field-divider">→</div>
+          <div class="field-col field-col--to">
+            <label for="field-drop">🏁 To</label>
+            <input type="text" id="field-drop" placeholder="e.g. Delhi" autocomplete="off" required>
+          </div>
+          <div class="field-col field-col--date">
+            <label for="field-date">📅 Date</label>
+            <input type="date" id="field-date">
+          </div>
+          <div class="field-col field-col--time">
+            <label for="field-time">🕐 Time</label>
+            <input type="time" id="field-time">
+          </div>
+          <div class="field-col field-col--cab">
+            <label for="field-cab-pref">🚗 Brand</label>
+            <select id="field-cab-pref">
+              <option value="Any">Any</option>
+              <option value="Ola">Ola</option>
+              <option value="Uber">Uber</option>
+              <option value="Rapido">Rapido</option>
+            </select>
+          </div>
+          <div class="field-col field-col--vehicle">
+            <label for="field-vehicle-type">🛺 Vehicle</label>
+            <select id="field-vehicle-type">
+              <option value="Any">Any</option>
+              <option value="Car">Car</option>
+              <option value="Auto">Auto</option>
+              <option value="Bike">Bike</option>
+            </select>
+          </div>
+          <button type="submit" id="quick-submit-btn" class="quick-search-btn">
+            <span id="quick-btn-text">Get Fares</span>
+            <span id="quick-btn-spinner" class="btn-spinner hidden"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ───── AI ASSISTANT PANE ───── -->
+    <div id="pane-ai" class="booking-pane hidden">
+      <form id="ai-form">
+        <div class="ai-assistant-header">
+          <span class="ai-assistant-label">🤖 AI Assistant</span>
+          <span class="ai-assistant-hint">Powered by Ollama · Speaks Hinglish &amp; English</span>
+        </div>
+        <div class="ai-prompt-row">
+          <textarea id="user-query" rows="3" placeholder="Hinglish ya English mein poochho — e.g.
+'Meerut se Delhi kal 9 baje Ola chahiye'
+'Cheapest cab from Noida to Airport tonight'
+'Rapido ka kya rate hai Gurgaon se Delhi?'"></textarea>
+          <button type="submit" id="ai-submit-btn" class="ai-ask-btn">
+            <span id="ai-btn-label">Ask</span>
+            <span id="ai-btn-spinner" class="btn-spinner hidden"></span>
+          </button>
+        </div>
+        <div class="ai-tip-row">
+          <span>💡 Tip: Model se directly baat karo — woh khud tools call karega</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- ───── PIPELINE TRACE ───── -->
+    <div id="agent-trace-card" class="trace-terminal hidden">
+      <div class="trace-terminal-header">
+        <h4>📟 Agent Execution Trace</h4>
+        <div class="hero-badge-dot" style="width:6px;height:6px;"></div>
+      </div>
+      <div id="trace-logs" class="trace-terminal-content"></div>
+    </div>
+
+    <!-- ───── PIPELINE STAGES SIDEBAR ───── -->
+    <div id="stage-tracker" class="stage-tracker hidden">
+      <div class="stage-item" id="stage-nlp"><span class="stage-num">1</span> NLP Extract</div>
+      <div class="stage-item" id="stage-geocode"><span class="stage-num">2</span> Geocode</div>
+      <div class="stage-item" id="stage-route"><span class="stage-num">3</span> Route</div>
+      <div class="stage-item" id="stage-weather"><span class="stage-num">4</span> Weather</div>
+      <div class="stage-item" id="stage-surge"><span class="stage-num">5</span> Surge Calc</div>
+      <div class="stage-item" id="stage-engine"><span class="stage-num">6</span> Done</div>
+    </div>
+
+    <!-- ───── RESULTS DASHBOARD ───── -->
+    <div id="output-panel" class="results-dashboard hidden">
+      <!-- Left: Trip Details + Map -->
+      <div class="result-col result-col--left">
+        <div class="result-card">
+          <h3>📋 Trip Summary</h3>
+          <div class="trip-detail-grid">
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">From</div>
+              <div id="val-pickup" class="trip-detail-val text-accent">—</div>
+            </div>
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">To</div>
+              <div id="val-drop" class="trip-detail-val text-secondary">—</div>
+            </div>
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">Time</div>
+              <div id="val-datetime" class="trip-detail-val">—</div>
+            </div>
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">Distance</div>
+              <div id="val-distance" class="trip-detail-val font-mono">—</div>
+            </div>
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">Duration</div>
+              <div id="val-duration" class="trip-detail-val font-mono">—</div>
+            </div>
+            <div class="trip-detail-item">
+              <div class="trip-detail-lbl">Weather</div>
+              <div id="val-weather" class="trip-detail-val">—</div>
+            </div>
+          </div>
+        </div>
+        <div id="map-container" class="map-placeholder"></div>
+      </div>
+
+      <!-- Right: Surge Info + Cab Options -->
+      <div class="result-col result-col--right">
+        <div id="surge-alert" class="surge-banner">
+          <span class="surge-icon">⚡</span>
+          <div>
+            <div class="surge-title">Surge Monitor</div>
+            <div id="surge-details" class="surge-text">—</div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <h3>🚘 Choose Your Cab</h3>
+          <div id="cab-list" class="cab-list"></div>
+          <button id="book-btn" class="book-btn">Confirm &amp; Book Ride →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───── ACTIVE RIDE PANEL ───── -->
+    <div id="active-ride-panel" class="active-ride-panel hidden">
+      <div class="ride-confirmed-header">
+        <h3>🎉 Ride Confirmed!</h3>
+        <p>Rahul Kumar is arriving at your pickup spot.</p>
+      </div>
+      <div class="ride-info-strip">
+        <div class="ride-info-item"><span class="ride-info-lbl">From</span><span id="active-pickup" class="ride-info-val">—</span></div>
+        <div class="ride-info-item"><span class="ride-info-lbl">To</span><span id="active-drop" class="ride-info-val">—</span></div>
+        <div class="ride-info-item"><span class="ride-info-lbl">Cab</span><span id="active-cab-class" class="ride-info-val">—</span></div>
+      </div>
+      <div class="driver-card">
+        <div class="driver-avatar">👨🏽‍✈️</div>
+        <div class="driver-info">
+          <h4>Rahul Kumar</h4>
+          <span>⭐ 4.9 Rating · Silver Swift Dzire</span>
+        </div>
+        <div class="driver-badges">
+          <div class="plate-badge">UP-16-AB-8392</div>
+          <div class="otp-badge">OTP: <strong>4729</strong></div>
+        </div>
+      </div>
+
+      <div class="driver-chat-wrap">
+        <h4>💬 Chat with Driver</h4>
+        <div id="driver-chat-box" class="chat-display"></div>
+        <form id="driver-chat-form" class="chat-input-row">
+          <input type="text" id="driver-msg-input" placeholder="e.g. Bhaiya, main gate pe hu...">
+          <button type="submit" class="btn-primary" style="padding:8px 16px;border-radius:6px;font-size:0.85rem;border:none;cursor:pointer;">Send</button>
+        </form>
+      </div>
+
+      <button id="cancel-ride-btn" class="cancel-btn">❌ Cancel &amp; Request Another</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script src="/static/js/main.js"></script>
+</body>
+</html>
