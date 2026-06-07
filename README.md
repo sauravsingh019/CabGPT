@@ -321,17 +321,6 @@ Feel free to use, modify, and distribute this project.
 
 ---
 
-## 👨‍💻 Author
-
-**Saurav Singh**
-
-BCA Student • AI Developer • Full Stack Enthusiast
-
-GitHub:
-https://github.com/sauravsingh019
-
----
-
 <div align="center">
 
 ### 🚕 Smarter Rides. Better Prices. Powered by AI.
